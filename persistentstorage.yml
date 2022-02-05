@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: wordpress-persistent-storage
+  labels:
+    tier: frontend
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+   - ReadWriteMany
+  storageClassName: local-storage
+  hostPath:
+    path: /var/wordpress 
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-persistent-storage
+  labels:
+    tier: backend
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+   - ReadWriteMany
+  storageClassName: local-storage
+  hostPath:
+    path: /var/wordpress
